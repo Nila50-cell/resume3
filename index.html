@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NILAMESH PANDA - Resume</title>
+<style>
+/* Global, Theme, Header, Social Bar, Progress Bar CSS remains same as previous code */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background: linear-gradient(-45deg, #1e3c72, #2a5298, #4facfe, #00f2fe);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  overflow-x: hidden;
+  transition: background 1s, color 1s;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+body.light-mode { background: #f8f8f8; color: #222; }
+.progress-bar { position: fixed; top: 0; left: 0; height: 6px; background: linear-gradient(90deg, #ff0080, #4facfe); width: 0%; z-index: 1000; box-shadow: 0 0 10px #ff0080; }
+.theme-toggle { position: fixed; top: 15px; right: 15px; background: #4facfe; border: none; padding: 10px; border-radius: 50%; cursor: pointer; z-index: 1000; font-size: 20px; color: #fff; transition: transform 0.3s; }
+.theme-toggle:hover { transform: scale(1.1); background: #ff0080; }
+.social-bar { position: fixed; top: 50%; left: 0; transform: translateY(-50%); display: flex; flex-direction: column; z-index: 999; }
+.social-bar a { display: flex; align-items: center; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; padding: 12px; margin: 5px 0; width: 45px; overflow: hidden; transition: width 0.3s ease, background 0.3s; border-radius: 0 30px 30px 0; font-size: 20px; }
+.social-bar a span { margin-left: 10px; opacity: 0; transition: opacity 0.3s; }
+.social-bar a:hover { width: 150px; background: #4facfe; }
+.social-bar a:hover span { opacity: 1; }
+header { text-align: center; padding: 70px 20px 50px; }
+header h1 { font-size: 3em; animation: neonGlow 3s infinite alternate; }
+@keyframes neonGlow { 0%{text-shadow:0 0 10px #00f2fe;}50%{text-shadow:0 0 20px #ff0080;}100%{text-shadow:0 0 20px #4facfe;} }
+.welcome { font-size: 1.8em; font-weight: bold; color: #ffeb3b; opacity: 0; transform: translateX(-100%); animation: slideIn 1.5s forwards, glow 1.5s infinite alternate; }
+.welcome.fade-out { opacity: 0; visibility: hidden; }
+@keyframes slideIn { 0%{transform:translateX(-100%);}100%{transform:translateX(0);opacity:1;} }
+@keyframes glow { 0%{text-shadow:0 0 5px #ffeb3b;}100%{text-shadow:0 0 20px #fff176;} }
+.container { max-width: 1000px; margin: auto; padding: 20px; }
+.section { background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px; margin: 30px 0; opacity: 0; transform: scale(0.8); transition: all 1s ease-out; box-shadow: 0 8px 20px rgba(0,0,0,0.4); backdrop-filter: blur(10px); }
+.section.visible { opacity: 1; transform: scale(1); }
+.section-title { font-size: 2em; margin-bottom: 20px; border-bottom: 3px solid #4facfe; }
+
+/* Timeline (Education) */
+.timeline { position: relative; margin: 20px 0; padding-left: 30px; border-left: 3px solid #4facfe; }
+.timeline::before { content:''; position:absolute; left:-9px; top:0; bottom:0; width:15px; background:linear-gradient(180deg,#4facfe,#ff0080,#00f2fe); animation: flowing 4s linear infinite; }
+@keyframes flowing { 0%{background-position:0% 0%;}100%{background-position:0% 200%;} }
+.timeline-item { margin-bottom: 20px; opacity:0; transform:translateX(-50px); transition:all 1s ease; }
+.timeline-item.visible { opacity:1; transform:translateX(0); }
+.timeline-item::before { content:''; position:absolute; left:-37px; top:5px; width:15px; height:15px; background:#ff0080; border-radius:50%; animation:pulseDot 2s infinite alternate; }
+@keyframes pulseDot { 0%{box-shadow:0 0 5px #ff0080;}100%{box-shadow:0 0 20px #ff0080;} }
+
+/* Skills */
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:15px; }
+.skill-box { background:rgba(255,255,255,0.1); padding:15px; text-align:center; border-radius:10px; color:#fff; font-weight:bold; border:2px solid transparent; animation: glowBorder 3s infinite alternate; }
+.skill-box:hover { transform:scale(1.1); }
+@keyframes glowBorder { 0%{border-color:#00f2fe;}50%{border-color:#ff0080;}100%{border-color:#4facfe;} }
+
+/* Awards & Certificates */
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; }
+.card { background:rgba(255,255,255,0.1); padding:15px; border-radius:10px; color:#fff; text-align:center; border:2px solid transparent; animation: glowBorder 3s infinite alternate; }
+.card a.btn { display:inline-block; margin-top:10px; padding:10px 20px; background:#ff004f; color:#fff; font-weight:bold; border:none; border-radius:8px; text-decoration:none; box-shadow:0 0 10px #ff004f; animation:pulseBtn 1.5s infinite alternate; }
+@keyframes pulseBtn { 0%{box-shadow:0 0 5px #ff004f;}100%{box-shadow:0 0 20px #ff004f;} }
+.year { margin-top:8px; font-size:0.9em; color:#ffd700; }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="theme-toggle" id="themeToggle"><i class="fas fa-adjust"></i></button>
+
+<!-- Social Bar -->
+<div class="social-bar">
+  <a href="https://www.linkedin.com/in/nilamesh-panda-a732252a3" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+  <a href="https://www.facebook.com/nilamesh.panda" target="_blank"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+  <a href="https://www.instagram.com/pandanilamesh6" target="_blank"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+  <a href="https://wa.me/919635518680" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+</div>
+
+<header>
+  <div class="welcome" id="welcome">Welcome to my profile</div>
+  <h1>NILAMESH PANDA</h1>
+  <p>Email: <a href="mailto:nilameshpanda@gmail.com" style="color:#fff;">nilameshpanda@gmail.com</a> | Phone: 9635518680</p>
+</header>
+
+<div class="container">
+  <!-- Summary -->
+  <div class="section"><div class="section-title">Summary</div>
+    <p>Passionate and detail-oriented Computer Science graduate with strong foundations in programming, web development, and emerging technologies. Skilled in problem-solving, leadership, and teamwork with an eagerness to learn and adapt to new challenges.</p>
+  </div>
+
+  <!-- Education -->
+  <div class="section"><div class="section-title">Education</div>
+    <div class="timeline">
+      <div class="timeline-item"><strong>2013:</strong> SRI RAMKRISHNA NIRMAL CHITTA PATHASHRAM — Primary</div>
+      <div class="timeline-item"><strong>2016:</strong> CHANDPUR HAROCHARAN VIDYAMANDIR (H.S) — Madhyamik (Class 7)</div>
+      <div class="timeline-item"><strong>2019:</strong> DIGHA VIDYABHAWAN — Madhyamik (2019), Higher Secondary (2020)</div>
+      <div class="timeline-item"><strong>2021-2024:</strong> BELDA COLLEGE — B.Sc(H) in Computer Science</div>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="section"><div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-box">HTML</div><div class="skill-box">CSS</div><div class="skill-box">JavaScript</div>
+      <div class="skill-box">Python</div><div class="skill-box">Project Management</div><div class="skill-box">Public Relations</div>
+      <div class="skill-box">Teamwork</div><div class="skill-box">Time Management</div><div class="skill-box">Leadership</div>
+      <div class="skill-box">Effective Communication</div><div class="skill-box">Critical Thinking</div>
+    </div>
+  </div>
+
+  <!-- Awards -->
+  <div class="section"><div class="section-title">Awards</div>
+    <div class="card-grid">
+      <div class="card">1st place holder in English exam<br><a class="btn" href="https://drive.google.com/file/d/1neZDleE5kLWPog4eTemwO_bSwijJy_i4/view" target="_blank">GO</a><div class="year">2013</div></div>
+      <div class="card">2nd place in Drawing Competition<br><a class="btn" href="https://drive.google.com/file/d/1nq1NkLeE3j6G3zFOzCTQq5uF2V4Oj8jW/view" target="_blank">GO</a><div class="year">2015</div></div>
+      <div class="card">A++ grade Talent Search Exam<br><a class="btn" href="https://drive.google.com/file/d/1nD2msGIzayUuSP7rghkUP8-YGKWR3-iq/view" target="_blank">GO</a><div class="year">2017</div></div>
+      <div class="card">Scholarship Exam<br><a class="btn" href="https://drive.google.com/file/d/1nX0psJA1GCIVfKYxbcaNPD7FIlvA54hV/view" target="_blank">GO</a><div class="year">2012</div></div>
+      <div class="card">Cultural Program Achievement<br><a class="btn" href="https://drive.google.com/file/d/1nWNHmWpAP59_Ym6suFOYBu53VgDBc8fV/view" target="_blank">GO</a><div class="year">2018</div></div>
+    </div>
+  </div>
+
+  <!-- Certificates -->
+  <div class="section"><div class="section-title">Certificates</div>
+    <div class="card-grid">
+      <div class="card"><strong>HTML Certificate</strong><br><a class="btn" href="https://www.linkedin.com/posts/nilamesh-panda-a732252a3_got-from-kg-coding-on-html-activity-7171511557795799041-cIYD" target="_blank">View</a></div>
+      <div class="card"><strong>Information Security</strong><br><a class="btn" href="https://www.linkedin.com/posts/nilamesh-panda-a732252a3_greatlearningacademy-greatlearning-glacertificate-activity-7255199607389921280-gmLX" target="_blank">View</a></div>
+      <div class="card"><strong>ChatGPT for Beginners</strong><br><a class="btn" href="https://www.linkedin.com/posts/nilamesh-panda-a732252a3_chatgpt-for-beginners-course-completion-certificate-activity-7246926016676257793-pueT" target="_blank">View</a></div>
+      <div class="card"><strong>AI Fundamentals</strong><br><a class="btn" href="https://www.linkedin.com/posts/nilamesh-panda-a732252a3_greatlearningacademy-greatlearning-glacertificate-activity-7247227230341242881-6MrM" target="_blank">View</a></div>
+      <div class="card"><strong>AI for Beginners (HP)</strong><br><a class="btn" href="https://www.life-global.org/certificate/846fb8d5-4452-4770-9b5e-b610c561c20b" target="_blank">View</a></div>
+      <div class="card"><strong>Data Science & Analytics</strong><br><a class="btn" href="https://www.life-global.org/certificate/d9a06be9-410e-4618-a4a9-463cad5040d6" target="_blank">View</a></div>
+      <div class="card"><strong>Critical Infrastructure Protection</strong><br><a class="btn" href="https://www.linkedin.com/posts/nilamesh-panda-a732252a3_one-more-certificate-in-my-bag-activity-7332280441997090816-TG1R" target="_blank">View</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Theme Toggle
+document.getElementById('themeToggle').onclick = () => document.body.classList.toggle('light-mode');
+// Scroll Progress
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY, docHeight = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('progressBar').style.width = (scrollTop / docHeight) * 100 + "%";
+});
+// Section Fade-in
+const sections = document.querySelectorAll('.section'); const timelineItems = document.querySelectorAll('.timeline-item');
+window.addEventListener('scroll', () => {
+  const triggerBottom = window.innerHeight * 0.85;
+  sections.forEach(sec => { if(sec.getBoundingClientRect().top < triggerBottom) sec.classList.add('visible'); });
+  timelineItems.forEach(item => { if(item.getBoundingClientRect().top < triggerBottom) item.classList.add('visible'); });
+});
+setTimeout(()=>document.getElementById('welcome').classList.add('fade-out'),5000);
+</script>
+</body>
+</html>
